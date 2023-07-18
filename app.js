@@ -13,9 +13,12 @@ app.get("/", function (req, res) {
             const weatherData = JSON.parse(data);
             const temp = weatherData.main.temp;
             const weatherDesc = weatherData.weather[0].description;
+            const icon = weatherData.weather[0].icon
+            const imageUrl = "https://openweathermap.org/img/wn/"+icon+"@2x.png";
             console.log(weatherDesc);
             res.write("<p>the weather is "+weatherDesc+"</p>")
             res.write("<h1>the temperature in mumbai is " + temp + " degree celsius</h1>");
+            res.write("<img src = " + imageUrl + ">");
             res.send();
 
         })
